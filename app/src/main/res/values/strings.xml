@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jogja Tasty</string>
+    <string name="text_title">Jogja <br></br>Tasty</string>
+    <string name="text_title_home">Simple way to find<br></br><font color="#FF6838">tasty recipes</font></string>
+</resources>
