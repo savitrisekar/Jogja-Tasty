@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="semi_black">#3D3D3D</color>
     <color name="light_orange">#FEF0E3</color>
-    <color name="color_dsc">#66302f3c</color>
-    <color name="bg_food">#302F3C</color>
+    <color name="light_black">#302F3C</color>
+    <color name="bg_back">#fafafa</color>
+    <color name="color_orange">#FF6838</color>
 </resources>
