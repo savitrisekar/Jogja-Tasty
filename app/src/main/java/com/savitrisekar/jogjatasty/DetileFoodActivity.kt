@@ -1,18 +1,16 @@
 package com.savitrisekar.jogjatasty
 
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jogjatasty.R
 import kotlinx.android.synthetic.main.activity_detile_food.*
-import kotlinx.android.synthetic.main.item_category_new.*
 
 class DetileFoodActivity : AppCompatActivity() {
 
@@ -34,11 +32,10 @@ class DetileFoodActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
-        val civFood: ImageView = findViewById(R.id.iv_foodie)
-        val tvCategory: TextView = findViewById(R.id.tv_category)
-        val tvArea: TextView = findViewById(R.id.tv_country)
-        val tvInstruction: TextView = findViewById(R.id.tv_instruction)
-        val tvIngredients: TextView = findViewById(R.id.tv_ingredient)
+        initView()
+    }
+
+    private fun initView() {
 
         val image = intent.getIntExtra(EXTRA_IMAGE, 0)
         val name = intent.getStringExtra(EXTRA_NAME)
@@ -50,14 +47,23 @@ class DetileFoodActivity : AppCompatActivity() {
         Glide.with(this)
             .load(image)
             .apply(RequestOptions())
-            .into(civFood)
+            .into(iv_foodie)
 
-        tvCategory.text = category
-        tvArea.text = area
-        tvInstruction.text = instruction
-        tvIngredients.text = ingredient
+        tv_title_food.text = name
+        tv_category.text = category
+        tv_country.text = area
+        tv_instruction.text = instruction
+        tv_ingredient.text = ingredient
 
-        supportActionBar?.title = name
+        fab_share.setOnClickListener {
+            val message = "Ingredients of $name\n\n$ingredient"
+            //Intent to share the text
+            val shared = Intent()
+            shared.action = Intent.ACTION_SEND
+            shared.type = "text/plain"
+            shared.putExtra(Intent.EXTRA_TEXT, message);
+            startActivity(Intent.createChooser(shared, "Share via"))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -33,16 +33,28 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
                 android:layout_margin="@dimen/dimen_16"
-                android:background="@android:color/transparent"
+                android:background="@drawable/bg_btn_rounded"
                 app:layout_collapseMode="pin"
+                app:navigationIconTint="@color/color_orange"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/white"
+        app:srcCompat="@drawable/ic_share"
+        app:tint="@color/color_orange"
+        tools:ignore="VectorDrawableCompat" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -56,16 +68,29 @@
             android:orientation="vertical"
             android:padding="@dimen/dimen_16">
 
+            <TextView
+                android:id="@+id/tv_title_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_title_food"
+                android:textSize="@dimen/font_16"
+                android:textColor="@color/color_orange"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="@dimen/dimen_10"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_categories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_10"
                 app:cardCornerRadius="@dimen/dimen_8"
                 app:cardElevation="1dp"
                 app:layout_constraintEnd_toStartOf="@id/cv_country"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/tv_title_food">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,10 +124,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginTop="@dimen/dimen_10"
                 app:cardCornerRadius="@dimen/dimen_8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cv_categories"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/tv_title_food">
 
                 <LinearLayout
                     android:layout_width="match_parent"
